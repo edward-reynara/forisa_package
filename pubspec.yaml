@@ -1,7 +1,8 @@
 name: forisa_package
 description: Forisa Package
 version: 0.0.1
-homepage:
+author: Edward Reynara <edwardreynara@gmail.com>
+homepage: https://github.com/edward-reynara/forisa_package.git
 
 environment:
   sdk: '>=3.1.5 <4.0.0'
