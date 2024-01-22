@@ -5,8 +5,8 @@ import 'package:forisa_package/widgets/buttons.dart';
 import 'package:forisa_package/widgets/dividers.dart';
 import 'package:get/get.dart';
 
-import 'configs/config_colors.dart';
-import 'configs/config_constants.dart';
+import '../configs/config_colors.dart';
+import '../configs/config_constants.dart';
 
 enum DialogStatus { success, error, info }
 enum AlertStatus { success, error, info }
