@@ -1,7 +1,5 @@
 import 'dart:io';
 
-import '../configs/config_app.dart';
-import '../configs/config_constants.dart';
 import '../models/platform_model.dart';
 import '../services/PlatformService.dart';
 import '../utils/CryptoUtil.dart';
@@ -22,25 +20,29 @@ class APIProvider {
   static const String INVALID_VERSION_API_CODE = '800002';
   static const PAGE_SIZE = 10;
   static const PAGE_INIT = 1;
+  String apiUrl = "";
+  String clientAppCode = "";
+  String clientApiId = "";
+  String clientApiKey = "";
 
-  final HttpClient.BaseOptions baseOptions = HttpClient.BaseOptions(
-      baseUrl: ConfigApp().apiUrl,
-      connectTimeout: const Duration(milliseconds: ConfigConstant.apiTimeout),
-      receiveTimeout: const Duration(milliseconds: 100000),
-      followRedirects: true,
-      headers: {
-        "Accept": "application/json",
-        "X-Requested-With": "XMLHttpRequest",
-      });
+  HttpClient.BaseOptions? baseOptions;
   HttpClient.Dio? apiClient;
   HttpClient.Dio? unAuthClient;
   static final HttpClient.Dio _rawApiClient = HttpClient.Dio();
   // static DioCacheManager? _cacheManager;
 
-  APIProvider() {
-    if (apiClient == null) {
-      apiClient = new HttpClient.Dio(baseOptions);
-    }
+  APIProvider({required this.apiUrl, required String clientAppCode, required String clientApiId, required String clientApiKey})
+      : baseOptions = HttpClient.BaseOptions(
+    baseUrl: apiUrl,
+    connectTimeout: const Duration(milliseconds: 100000),
+    receiveTimeout: const Duration(milliseconds: 100000),
+    followRedirects: true,
+    headers: {
+      "Accept": "application/json",
+      "X-Requested-With": "XMLHttpRequest",
+    },
+  ) {
+    apiClient ??= HttpClient.Dio(baseOptions);
 
     // apiClient!.interceptors.add(getCacheManager().interceptor);
     apiClient!.interceptors.add(
@@ -52,7 +54,7 @@ class APIProvider {
       }, onRequest: (options, handler) async {
         // print('req interceptor');
 
-        options.headers.addAll(await this.getAuthorizedHeader());
+        options.headers.addAll(await getAuthorizedHeader());
 
         // print('Dio : ${options.uri.path}');
         // print('Dio : ${options.queryParameters.toString()}');
@@ -75,29 +77,27 @@ class APIProvider {
     if (token != null) {
       headers['Authorization'] = 'Bearer $token';
     }
-    headers['appcode'] = ConfigApp().clientAppCode;
+    headers['appcode'] = clientAppCode;
     headers['ostype'] = Platform.operatingSystem;
     headers['osver'] = platformModel.buildNumber;
-    headers['clientid'] = ConfigApp().clientApiId;
+    headers['clientid'] = clientApiId;
     headers['authcode'] =
-        CryptoUtil.genAuthCodeHeader(ConfigApp().clientApiKey, ConfigApp().clientAppCode, '0', reqTime);
+        CryptoUtil.genAuthCodeHeader(clientApiKey, clientAppCode, '0', reqTime);
     headers['reqtime'] = reqTime;
 
     return headers;
   }
 
   HttpClient.Dio getUnAuthApiClient({HttpClient.BaseOptions? options}) {
-    if (unAuthClient == null) {
-      unAuthClient = new HttpClient.Dio(options ??
+    unAuthClient ??= HttpClient.Dio(options ??
           HttpClient.BaseOptions(
-              baseUrl: ConfigApp().apiUrl,
+              baseUrl: apiUrl,
               connectTimeout: const Duration(milliseconds: 20000),
               receiveTimeout: const Duration(milliseconds: 100000),
               headers: {
                 "Accept": "application/json",
                 "X-Requested-With": "XMLHttpRequest",
               }));
-    }
 
     return unAuthClient!;
   }
