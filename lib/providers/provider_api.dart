@@ -34,7 +34,7 @@ class APIProvider {
   APIProvider({required this.apiUrl, required String clientAppCode, required String clientApiId, required String clientApiKey})
       : baseOptions = HttpClient.BaseOptions(
     baseUrl: apiUrl,
-    connectTimeout: const Duration(milliseconds: 100000),
+    connectTimeout: const Duration(milliseconds: 10000),
     receiveTimeout: const Duration(milliseconds: 100000),
     followRedirects: true,
     headers: {
