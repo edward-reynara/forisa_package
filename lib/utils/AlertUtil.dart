@@ -12,8 +12,11 @@ enum DialogStatus { success, error, info }
 enum AlertStatus { success, error, info }
 
 class AlertUtil {
-  static showResponseDialog({
-    required BuildContext context,
+  final BuildContext context;
+
+  AlertUtil(this.context);
+
+  Future<void> showResponseDialog({
     String? title,
     String? content,
     required DialogStatus status,
@@ -58,14 +61,14 @@ class AlertUtil {
                     children: [
                       Container(
                         width: double.infinity,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(16.0),
                             topRight: Radius.circular(16.0),
                           ),
                         ),
-                        padding: EdgeInsets.all(12.0),
+                        padding: const EdgeInsets.all(12.0),
                         child: Column(
                           children: [
                             ColorFiltered(
@@ -90,7 +93,7 @@ class AlertUtil {
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.all(12.0),
+                        padding: const EdgeInsets.all(12.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
@@ -98,7 +101,7 @@ class AlertUtil {
                               content ?? '',
                               textAlign: TextAlign.center,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 12.0,
                             ),
                             buttonCompact(
@@ -122,14 +125,15 @@ class AlertUtil {
             ));
   }
 
-  static Future<bool> showConfirmDialog(BuildContext context,
+  Future<bool> showConfirmDialog(
       {String? title,
       String? msg,
       String? okText,
       String? cancelText,
       bool replacePrimary = false,
-      Color? color}) async {
-    final btnColor = color ?? null;
+      Color? color
+      }) async {
+    final btnColor = color;
     return await showDialog<bool?>(
             context: context,
             barrierDismissible: true,
@@ -164,17 +168,17 @@ class AlertUtil {
         false;
   }
 
-  static Future<bool> showConfirmCheckboxDialog(BuildContext context,
-      {String? title,
-        String? msg,
-        String? msgDetail,
-        String? okText,
-        String? cancelText,
-        bool replacePrimary = false,
-        Color? color}) async {
+  Future<bool> showConfirmCheckboxDialog({
+    String? title,
+    String? msg,
+    String? msgDetail,
+    String? okText,
+    String? cancelText,
+    bool replacePrimary = false,
+    Color? color
+  }) async {
     bool isCheckboxChecked = false;
-
-    final btnColor = color ?? null;
+    final btnColor = color;
     return await showDialog<bool?>(
       context: context,
       barrierDismissible: true,
@@ -189,12 +193,12 @@ class AlertUtil {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(msg ?? ConfigConstant.TR_CONFIRM_MSG.tr),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Text(msgDetail ?? ConfigConstant.TR_CONFIRM_MSG_DETAIL.tr,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 12.0,
                       )),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     Row(
                       children: [
                         Checkbox(
@@ -205,7 +209,7 @@ class AlertUtil {
                             });
                           },
                         ),
-                        Expanded(
+                        const Expanded(
                           child: Text('I agree to the terms and conditions'),
                         ),
                       ],
@@ -248,14 +252,18 @@ class AlertUtil {
         false;
   }
 
-  static void showSnackbar(String title, String msg, AlertStatus status,
+  void showSnackbar(
+      String title,
+      String msg,
+      AlertStatus status,
       {Function()? buttonPressed,
-      String? buttonText,
-      bool persistent = false}) {
+        String? buttonText,
+        bool persistent = false
+      }) {
     Get.snackbar(
       title,
       msg,
-      icon: Icon(
+      icon: const Icon(
         FontAwesomeIcons.bell,
         size: 20.0,
         color: Colors.white,
@@ -271,11 +279,11 @@ class AlertUtil {
       borderRadius: 14.0,
       snackStyle: SnackStyle.FLOATING,
       snackPosition: SnackPosition.TOP,
-      margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 5.0),
+      margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 5.0),
       dismissDirection: DismissDirection.horizontal,
-      animationDuration: Duration(milliseconds: 300),
+      animationDuration: const Duration(milliseconds: 300),
       duration: Duration(seconds: persistent ? 30 : 3),
-      padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
+      padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
       mainButton: buttonPressed != null
           ? TextButton(
               onPressed: buttonPressed,
@@ -304,7 +312,7 @@ class AlertUtil {
                 alignment: FractionalOffset.center,
                 child: Container(
                   width: MediaQuery.of(context).size.width / 4,
-                  padding: EdgeInsets.all(12.0),
+                  padding: const EdgeInsets.all(12.0),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(16.0),
@@ -326,7 +334,7 @@ class AlertUtil {
                             ),
                           ),
                           dividerForm(),
-                          Text('Memuat...',
+                          const Text('Memuat...',
                               style: TextStyle(
                                   fontSize: 8.0, fontWeight: FontWeight.w300)),
                         ],
