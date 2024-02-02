@@ -168,7 +168,7 @@ Widget buttonCompact({
     ),
     onPressed: isSubmitting ? null : onPressed,
     child: isSubmitting
-        ? FittedBox(
+        ? const FittedBox(
             fit: BoxFit.contain,
             child: SpinKitCircle(
               color: Colors.white,
