@@ -10,7 +10,7 @@ class UploadImageWidget extends StatelessWidget {
   final String text;
   final IconData iconData;
   final Color buttonColor;
-  final String filePath;
+  // final String filePath;
   final controllerGallery;
   final controllerCamera;
   final controller;
@@ -19,7 +19,7 @@ class UploadImageWidget extends StatelessWidget {
     required this.text,
     required this.iconData,
     required this.buttonColor,
-    required this.filePath,
+    // required this.filePath,
     required this.controllerGallery,
     required this.controllerCamera,
     required this.controller,
@@ -30,7 +30,7 @@ class UploadImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (filePath.isEmpty) {
+    if (controller.iDNoFilePath.isEmpty) {
       return buttonCompact(
         onPressed: () {
           showDialog(
@@ -78,7 +78,7 @@ class UploadImageWidget extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(14.0),
               child: Image.file(
-                File(filePath),
+                File(controller.iDNoFilePath.value),
                 fit: BoxFit.cover,
               ),
             ),
