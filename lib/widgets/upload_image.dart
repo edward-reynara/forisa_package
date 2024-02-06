@@ -7,7 +7,6 @@ import '../configs/config_colors.dart';
 import 'buttons.dart';
 
 class UploadImageWidget extends StatelessWidget {
-  final VoidCallback onPressed;
   final String text;
   final IconData iconData;
   final Color buttonColor;
@@ -17,7 +16,6 @@ class UploadImageWidget extends StatelessWidget {
   final controller;
 
   const UploadImageWidget({super.key,
-    required this.onPressed,
     required this.text,
     required this.iconData,
     required this.buttonColor,
