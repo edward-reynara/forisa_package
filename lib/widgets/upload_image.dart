@@ -32,7 +32,7 @@ class UploadImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      if (controller.iDNoFilePath.isEmpty) {
+      if (controller.iDNoFilePath.value.isEmpty) {
         return buttonCompact(
           onPressed: () {
             showDialog(
