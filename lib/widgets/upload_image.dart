@@ -11,7 +11,6 @@ class UploadImageWidget extends StatelessWidget {
   final String text;
   final IconData iconData;
   final Color buttonColor;
-  // final String filePath;
   final controllerGallery;
   final controllerCamera;
   final controller;
@@ -20,14 +19,10 @@ class UploadImageWidget extends StatelessWidget {
     required this.text,
     required this.iconData,
     required this.buttonColor,
-    // required this.filePath,
     required this.controllerGallery,
     required this.controllerCamera,
     required this.controller,
   });
-
-  // final _controller = Get.put(AuthController(AuthTag.register),
-  //     tag: FormatUtil.getRandomString(type: RandomType.classId));
 
   @override
   Widget build(BuildContext context) {
