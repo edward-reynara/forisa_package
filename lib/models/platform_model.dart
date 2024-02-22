@@ -12,11 +12,11 @@ class PlatformModel {
   });
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['appName'] = this.appName;
-    data['packageName'] = this.packageName;
-    data['version'] = this.version;
-    data['buildNumber'] = this.buildNumber;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['appName'] = appName;
+    data['packageName'] = packageName;
+    data['version'] = version;
+    data['buildNumber'] = buildNumber;
     return data;
   }
 }

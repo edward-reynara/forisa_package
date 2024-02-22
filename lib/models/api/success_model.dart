@@ -18,12 +18,12 @@ class SuccessModel {
     String? responseMsg;
 
     factory SuccessModel.fromJson(Map<String, dynamic> json) => SuccessModel(
-        responseCode: json["response_code"] == null ? null : json["response_code"],
-        responseMsg: json["response_msg"] == null ? null : json["response_msg"],
+        responseCode: json["response_code"],
+        responseMsg: json["response_msg"],
     );
 
     Map<String, dynamic> toJson() => {
-        "response_code": responseCode == null ? null : responseCode,
-        "response_msg": responseMsg == null ? null : responseMsg,
+        "response_code": responseCode,
+        "response_msg": responseMsg,
     };
 }
