@@ -1,5 +1,4 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter/cupertino.dart';
 import '../configs/config_constants.dart';
 import '../interfaces/ConnectivityInterface.dart';
 import '../utils/AlertUtil.dart';
@@ -9,9 +8,8 @@ class ConnectivityService implements IConnectivityService {
   ConnectivityResult? _connectivityResult;
   final AlertUtil _alertUtil;
 
-  ConnectivityService(BuildContext context)
-      : _alertUtil = AlertUtil(context) {
-    if (_connectivityResult == null) {
+  ConnectivityService(this._alertUtil) {
+    if(_connectivityResult == null) {
       _connectivity.onConnectivityChanged.listen((event) {
         if(_connectivityResult != event){
           if (event == ConnectivityResult.none) {
