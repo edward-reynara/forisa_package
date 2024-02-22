@@ -6,13 +6,11 @@ class PlatformService {
 
   Future<PlatformModel> getPlatformInfo() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    if (_platformModel == null) {
-      _platformModel = PlatformModel(
+    _platformModel ??= PlatformModel(
           appName: packageInfo.appName,
           packageName: packageInfo.packageName,
           version: packageInfo.version,
           buildNumber: packageInfo.buildNumber);
-    }
     return _platformModel!;
   }
 }

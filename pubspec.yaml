@@ -24,6 +24,7 @@ dependencies:
   image_picker: ^1.0.7
 #  flutter_datetime_picker: ^1.5.1
   flutter_datetime_picker_plus: ^2.1.0
+  connectivity_plus: ^3.0.6
   #nullsafety
   random_color: ^1.0.6-nullsafety
 
