@@ -6,14 +6,13 @@ import '../utils/AlertUtil.dart';
 class ConnectivityService implements IConnectivityService {
   final Connectivity _connectivity = Connectivity();
   ConnectivityResult? _connectivityResult;
-  final AlertUtil _alertUtil;
 
-  ConnectivityService(this._alertUtil) {
+  ConnectivityService() {
     if(_connectivityResult == null) {
       _connectivity.onConnectivityChanged.listen((event) {
         if(_connectivityResult != event){
           if (event == ConnectivityResult.none) {
-            _alertUtil.showSnackbar(ConfigConstant.ALERT_INFO, 'No internet connection. Please check your network.', AlertStatus.info, persistent: true);
+            AlertUtil.showSnackbarStatic(ConfigConstant.ALERT_INFO, 'No internet connection. Please check your network.', AlertStatus.info, persistent: true);
           }
         }
         _connectivityResult = event;

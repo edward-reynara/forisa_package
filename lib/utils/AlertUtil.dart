@@ -12,11 +12,8 @@ enum DialogStatus { success, error, info }
 enum AlertStatus { success, error, info }
 
 class AlertUtil {
-  final BuildContext context;
-
-  AlertUtil(this.context);
-
   Future<void> showResponseDialog({
+    required BuildContext context,
     String? title,
     String? content,
     required DialogStatus status,
@@ -126,6 +123,7 @@ class AlertUtil {
   }
 
   Future<bool> showConfirmDialog(
+      BuildContext context,
       {String? title,
       String? msg,
       String? okText,
@@ -169,6 +167,7 @@ class AlertUtil {
   }
 
   Future<bool> showConfirmCheckboxDialog({
+    required BuildContext context,
     String? title,
     String? msg,
     String? msgDetail,
@@ -252,6 +251,47 @@ class AlertUtil {
         false;
   }
 
+  static void showSnackbarStatic(String title, String msg, AlertStatus status,
+      {Function()? buttonPressed,
+        String? buttonText,
+        bool persistent = false}) {
+    Get.snackbar(
+      title,
+      msg,
+      icon: const Center(
+        child: FaIcon(
+          FontAwesomeIcons.bell,
+          size: 20.0,
+          color: Colors.white,
+        ),
+      ),
+      shouldIconPulse: false,
+      backgroundColor: status == AlertStatus.error
+          ? Colors.red
+          : status == AlertStatus.info
+          ? Colors.blue
+          : Colors.green,
+      colorText: ConfigColor.secondaryTextColor,
+      barBlur: 8.0,
+      borderRadius: 14.0,
+      snackStyle: SnackStyle.FLOATING,
+      snackPosition: SnackPosition.TOP,
+      margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 5.0),
+      dismissDirection: DismissDirection.horizontal,
+      animationDuration: const Duration(milliseconds: 300),
+      duration: Duration(seconds: persistent ? 30 : 3),
+      padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
+      mainButton: buttonPressed != null
+          ? TextButton(
+          onPressed: buttonPressed,
+          child: Text(buttonText ?? '-',
+              style: TextStyle(
+                color: ConfigColor.secondaryTextColor,
+              )))
+          : null,
+    );
+  }
+
   void showSnackbar(
       String title,
       String msg,
@@ -295,7 +335,7 @@ class AlertUtil {
     );
   }
 
-  static void showProgressDialog({
+  void showProgressDialog({
     required BuildContext context,
     String? text,
     Color? color,
