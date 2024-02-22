@@ -28,6 +28,7 @@ dependencies:
   device_info_plus: ^9.1.2
   platform_device_id: ^1.0.1
   shimmer: ^3.0.0
+  flutter_typeahead: ^4.8.0
   #nullsafety
   random_color: ^1.0.6-nullsafety
 
