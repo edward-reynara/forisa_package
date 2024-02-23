@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:android_id/android_id.dart';
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:custom_platform_device_id/platform_device_id.dart';
+import 'package:platform_device_id/platform_device_id.dart';
 
 import '../models/device_model.dart';
 

@@ -26,8 +26,8 @@ dependencies:
   connectivity_plus: ^3.0.6
   android_id: ^0.3.6
   device_info_plus: ^9.1.2
-#  platform_device_id: ^1.0.1
-  custom_platform_device_id: ^1.0.8
+  platform_device_id: ^1.0.1
+#  custom_platform_device_id: ^1.0.8
   shimmer: ^3.0.0
   flutter_typeahead: ^4.8.0
   #nullsafety
