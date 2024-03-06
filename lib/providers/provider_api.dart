@@ -31,7 +31,7 @@ class APIProvider {
   static final HttpClient.Dio _rawApiClient = HttpClient.Dio();
   // static DioCacheManager? _cacheManager;
 
-  APIProvider({required this.apiUrl, required String clientAppCode, required String clientApiId, required String clientApiKey})
+  APIProvider({required this.apiUrl, required this.clientAppCode, required this.clientApiId, required this.clientApiKey})
       : baseOptions = HttpClient.BaseOptions(
     baseUrl: apiUrl,
     connectTimeout: const Duration(milliseconds: 10000),
