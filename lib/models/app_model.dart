@@ -19,11 +19,18 @@ class AppModel {
     String? responseMsg;
     AppModelData? data;
 
-    factory AppModel.fromJson(Map<String, dynamic> json) => AppModel(
-        responseCode: json["response_code"],
-        responseMsg: json["response_msg"],
-        data: json["data"] == null ? null : AppModelData.fromJson(json["data"]),
-    );
+    factory AppModel.fromJson(Map<String, dynamic> json) {
+        return AppModel(
+            responseCode: json["response_code"],
+            responseMsg: json["response_msg"],
+            data: json["data"] != null
+                ? AppModelData.fromJson(
+                json["data"] is Map<String, dynamic>
+                    ? json["data"]
+                    : <String, dynamic>{"data": json["data"]})
+                : null,
+        );
+    }
 
     Map<String, dynamic> toJson() => {
         "response_code": responseCode,
