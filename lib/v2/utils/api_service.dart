@@ -1,16 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import '../configs/config.dart';
 
 class ApiService {
   late Dio dio;
   FlutterSecureStorage flutterSecureStorage = const FlutterSecureStorage();
+  String apiUrl = "";
 
-  Dio getApiClient({context, bool useToken = true}) {
+  Dio getApiClient({context, bool useToken = true, required String apiUrl}) {
     Duration time_10s = const Duration(seconds: 10);
     Duration time_100s = const Duration(seconds: 100);
     BaseOptions options = BaseOptions(
-        baseUrl: Config.apiUrl,
+        baseUrl: apiUrl,
         connectTimeout: time_10s,
         receiveTimeout: time_100s,
         headers: {
