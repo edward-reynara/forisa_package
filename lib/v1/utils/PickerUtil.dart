@@ -46,4 +46,19 @@ class PickerUtil {
 
     return '';
   }
+
+  static Future<String> pickImage50(ImageSource source) async {
+    var img = await ImagePicker().pickImage(
+      source: source,
+      imageQuality: 50,
+      maxWidth: 500.0,
+      maxHeight: 1000.0,
+    );
+
+    if (img != null) {
+      return img.path;
+    }
+
+    return '';
+  }
 }

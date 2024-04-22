@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:forisa_package/widgets/buttons.dart';
-import 'package:forisa_package/widgets/dividers.dart';
+import 'package:forisa_package/v1/widgets/buttons.dart';
+import 'package:forisa_package/v1/widgets/dividers.dart';
 import 'package:get/get.dart';
 
 import '../configs/config_colors.dart';

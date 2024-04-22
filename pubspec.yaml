@@ -31,6 +31,9 @@ dependencies:
   platform_device_id_v3: ^1.0.0
   shimmer: ^3.0.0
   flutter_typeahead: ^4.8.0
+  photo_view: ^0.15.0
+  cached_network_image: ^3.3.1
+  flare_flutter: ^3.0.2
   #nullsafety
   random_color: ^1.0.6-nullsafety
 
