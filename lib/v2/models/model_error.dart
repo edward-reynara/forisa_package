@@ -1,6 +1,6 @@
 class ErrorModel {
   final String status;
-  final List<String> message;
+  final String message;
 
   ErrorModel({
     required this.status,
@@ -9,6 +9,6 @@ class ErrorModel {
 
   factory ErrorModel.fromJson(Map<String, dynamic> json) {
     return ErrorModel(
-        status: json['status'], message: List<String>.from(json['message']));
+        status: json['status'], message: json['message']);
   }
 }
