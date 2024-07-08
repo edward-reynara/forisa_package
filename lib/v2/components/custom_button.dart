@@ -24,7 +24,7 @@ class CustomButton {
     );
   }
 
-  Container btnAdd(VoidCallback onPressed) {
+  Container btnAdd(VoidCallback onPressed, {Color colorIcon = Colors.black}) {
     return Container(
       width: 60.0,
       height: 60.0,
@@ -42,7 +42,7 @@ class CustomButton {
       child: FloatingActionButton(
         onPressed: onPressed,
         backgroundColor: Colors.green,
-        child: const Icon(Icons.add),
+        child: Icon(Icons.add, color: colorIcon),
       ),
     );
   }
