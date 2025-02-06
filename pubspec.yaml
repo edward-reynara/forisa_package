@@ -33,16 +33,17 @@ dependencies:
   flutter_typeahead: ^4.8.0
   photo_view: ^0.15.0
   cached_network_image: ^3.3.1
-  flare_flutter: ^3.0.2
   connectivity_plus: ^6.1.0
+  #  flare_flutter: ^3.0.2
   #nullsafety
   random_color: ^1.0.6-nullsafety
 
   # Git
-#  forisa_toss:
-#    git:
-#      url: https://github.com/edward-reynara/forisa_toss.git
-#      ref: main
+  flare_flutter:
+    git:
+      url: https://github.com/mbfakourii/Flare-Flutter.git
+      path: flare_flutter
+      ref: remove_hashValues
 
 dev_dependencies:
   flutter_test:
