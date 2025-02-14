@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:android_id/android_id.dart';
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:platform_device_id_v3/platform_device_id.dart';
 
 import '../models/device_model.dart';
 
@@ -12,7 +11,7 @@ class Deviceutil {
       var device = await deviceInfo.androidInfo;
       const androididPlugin = AndroidId();
       var deviceID = await androididPlugin.getId();
-      deviceID ??= await PlatformDeviceId.getDeviceId;
+      // deviceID ??= await PlatformDeviceId.getDeviceId;
       return DeviceModel(
         deviceId: deviceID,
         deviceName: device.model,
